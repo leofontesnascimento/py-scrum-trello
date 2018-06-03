@@ -8,3 +8,6 @@ get-all-boards:
 
 get-board-by-id:
 	@python crawler.py -i $(ARGS)
+
+generate-burndown-chart:
+	@python burndown-generator.py -l $(ARGS)
