@@ -53,6 +53,10 @@ Steps:
 3. Verify the cards informations into your console.
 4. Save this command to use again in the future.
 
+Result:
+
+![Alt text](/chart/burndown.png?raw=true "Burndown")
+
 ## Example generate-burnup-chart command usage
 
 Steps:
@@ -62,6 +66,10 @@ Steps:
 3. Verify the cards informations into your console.
 4. Save this command to use again in the future.
 
+Result:
+
+![Alt text](/chart/burnup.png?raw=true "Burnup")
+
 ## Example generate-cfd-chart command usage
 
 Steps:
@@ -70,3 +78,7 @@ Steps:
 2. Analyze the plotted CFD chart. You save into a file if you want.
 3. Verify the cards informations into your console.
 4. Save this command to use again in the future.
+
+Result:
+
+![Alt text](/chart/cfd.png?raw=true "Cumulative Flow Diagram")
