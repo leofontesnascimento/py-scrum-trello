@@ -8,6 +8,7 @@ These Python codes aims to get Scrum metrics from the Trello tool.
 * Gets data boards from Trello.
 * Generates the Burndown chart.
 * Generates the Burnup chart.
+* Generates the CFD (Cumulative Flow Diagram) chart.
 
 ## Installation
 
@@ -58,5 +59,14 @@ Steps:
 
 1. Execute `$ make generate-burnup-chart ARGS=done_list_id` into your console. Replace `done_list_id` by list id representing the completed cards on the board. You might find this information analyzing the downloaded file named `data/YYY-mm-dd/lists.json`. The directory `/YYYY-mm-dd` will change according to the day of download.
 2. Analyze the plotted Burnup chart. You save into a file if you want.
+3. Verify the cards informations into your console.
+4. Save this command to use again in the future.
+
+## Example generate-cfd-chart command usage
+
+Steps:
+
+1. Execute `$ make generate-cfd-chart IDS=todo_list_id,wip_list_id,in_review_list_id,done_list_id LABELS=todo_list_label,wip_list_label,in_review_list_label,done_list_label` into your console, ids and labels separated by commas only. Replace these informations according to all list representing the completed workflow of your cards, in the order in which a card enters, walking and leaves the board. You might find this informations analyzing the downloaded file named `data/YYY-mm-dd/lists.json`. The directory `/YYYY-mm-dd` will change according to the day of download.
+2. Analyze the plotted CFD chart. You save into a file if you want.
 3. Verify the cards informations into your console.
 4. Save this command to use again in the future.
