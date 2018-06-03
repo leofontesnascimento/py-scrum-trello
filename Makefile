@@ -14,3 +14,6 @@ generate-burndown-chart:
 
 generate-burnup-chart:
 	@python burnup-generator.py -l $(ARGS)
+
+generate-cfd-chart:
+	@python cfd-generator.py -i $(IDS) -l $(LABELS)
