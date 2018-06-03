@@ -11,3 +11,6 @@ get-board-by-id:
 
 generate-burndown-chart:
 	@python burndown-generator.py -l $(ARGS)
+
+generate-burnup-chart:
+	@python burnup-generator.py -l $(ARGS)
