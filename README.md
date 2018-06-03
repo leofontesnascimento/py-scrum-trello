@@ -82,3 +82,7 @@ Steps:
 Result:
 
 ![Alt text](/chart/cfd.png?raw=true "Cumulative Flow Diagram")
+
+## More informations
+
+These Python codes was developed based in this  [article](https://www.excella.com/insights/burndown-chart-vs-cumulative-flow-diagram-cfd).
