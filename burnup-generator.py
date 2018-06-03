@@ -46,6 +46,7 @@ def generate_burnup(done_cards):
     y_pos = np.arange(len(days))
     plt.bar(y_pos, total_cards, color='darkgreen')
     plt.xticks(y_pos, days)
+    plt.savefig('chart/burnup.png')
     plt.show()
 
 

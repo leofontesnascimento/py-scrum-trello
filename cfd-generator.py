@@ -67,6 +67,7 @@ def generate_cfd(dict_cards):
     plt.stackplot(x, y, labels=[l[1:] for l in labels])
     plt.legend(loc='upper left')
     plt.xticks(x, days)
+    plt.savefig('chart/cfd.png')
     plt.show()
 
 
