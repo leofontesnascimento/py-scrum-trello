@@ -4,7 +4,7 @@ from datetime import datetime
 import getopt
 import json
 import os
-from rauth import OAuth1Service
+import requests
 import sys
 
 from constants import Constants
@@ -25,43 +25,30 @@ def write_json(file_name, data):
             ensure_ascii=False)
 
 
-def get_data(session, route_url, file_name):
-    response = session.get(
-        ''.join(Constants.api_url) + route_url,
-        params={},
-        verify=True)
-    data = response.json()
-    write_json(file_name, data)
+def get_data(credentials, route_url, file_name):
+    response = requests.get(
+        ''.join(Constants.api_url) +
+        route_url +
+        ''.join(Constants.credentials_url).format(
+            credentials['api_key'],
+            credentials['api_token']
+        ))
+
+    if response.status_code == requests.codes.ok:
+        data = response.json()
+        write_json(file_name, data)
+    else:
+        response.raise_for_status()
 
 
 def main(argv):
-    # Getting the token
-    trello = OAuth1Service(
-        name=Constants.app_name,
-        consumer_key=Constants.app_key,
-        consumer_secret=Constants.app_secret,
-        request_token_url=Constants.request_token_url,
-        access_token_url=Constants.access_token_url,
-        authorize_url=Constants.authorize_token_url,
-        base_url=Constants.base_url)
-
-    request_token, request_token_secret = trello.get_request_token()
-    print('request_token: ', request_token)
-    print('request_token_secret: ', request_token_secret)
-
-    # Allowing for the crawler
-    authorize_url = trello.get_authorize_url(request_token)
-    print('Visit this url: ', authorize_url)
-    code = input('Enter PIN from browser: ')
-    session = trello.get_auth_session(
-        request_token,
-        request_token_secret,
-        method='POST',
-        data={'oauth_verifier': code})
+    # Getting credentials
+    with open('credentials.json') as f_input:
+        credentials = json.load(f_input)
 
     # Getting all boards data
     get_data(
-        session,
+        credentials,
         ''.join(Constants.boards_route_url),
         ''.join(Constants.boards_file_name))
 
@@ -82,13 +69,13 @@ def main(argv):
 
         # Getting all cards data of a board
         get_data(
-            session,
+            credentials,
             ''.join(Constants.cards_route_url).format(board_id),
             ''.join(Constants.cards_file_name))
 
         #  Gettinf all lists of a board
         get_data(
-            session,
+            credentials,
             ''.join(Constants.lists_route_url).format(board_id),
             ''.join(Constants.lists_file_name))
 
