@@ -3,6 +3,9 @@
 install:
 	@pip install -r requirements.txt
 
+authorize:
+	@python authorize.py
+
 get-all-boards:
 	@python crawler.py
 
