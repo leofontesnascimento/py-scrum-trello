@@ -20,6 +20,22 @@ Steps:
 4. Save `constants.py` with your changes.
 5. Now you are ready to enjoy!.
 
+## Example authorize command usage
+
+Steps:
+
+1. Execute `$ make authorize` into your console.
+2. Visit the URL suggested using your browser.
+3. Get your api key by logging into Trello in web page opened by last command.
+4. Copy and paste this information into your console.
+5. Press `Enter`
+6. Visit the other URL suggested using your browser.
+7. Give permission to the client to access your boards.
+8. Get your permanent api token in web page opened by last command.
+9. Copy and paste this information into your console.
+10. Press `Enter`
+11. Close the web pages opened previously.
+
 ## Example get-all-boards command usage
 
 Steps:
